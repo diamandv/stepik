@@ -26,13 +26,17 @@ public class Main {
 
     private String printTextPerRole(String[] roles, String[] textLines) {
         StringBuilder text = new StringBuilder();
-//        int k = 0;
-        for (int i = 0; i < textLines.length; i++) {
-            for (int j = 0; j < roles.length; j++) {
-                if (textLines[i].toString().contains(roles[j])) {
-                    text.append(textLines[i]).append("\n");
+        StringBuilder line;
+        for (int i = 0; i < roles.length; i++) {
+            for (int j = 0; j < textLines.length; j++) {
+                if (textLines[j].contains(roles[i])) {
+                    if (!text.toString().contains(roles[i])) {
+                        text.append(roles[i]).append("\n");
+                    }
+                    line = new StringBuilder(textLines[j] + "\n").replace(0, roles[i].length(), "").append("\n");
+                    text.append(line);
                 }
-//                k++;
+//                    text.replace(0, roles[i].length(), "").append("\n").append((j + 1)).append(")").append(textLines[j].strip());
             }
         }
         return text.toString();

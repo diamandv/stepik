@@ -19,6 +19,6 @@ tasks.test {
     useJUnitPlatform()
 }
 
-tasks.withType<JavaCompile> {
-    options.encoding = "windows-1251"
-}
+//tasks.withType<JavaCompile> {
+//    options.encoding = "windows-1251"
+//}
