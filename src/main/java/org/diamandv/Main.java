@@ -1,0 +1,88 @@
+package org.diamandv;
+
+import java.math.BigInteger;
+
+public class Main {
+    public static void main(String[] args) {
+//        System.out.println(isPalindrome("m..a....m!"));
+        int[] a1 = new int[]{0, 1, 1, 2, 3, 5, 8, 9};
+        int[] a2 = new int[]{1, 1, 2, 4, 9};
+//        System.out.println(Arrays.toString(mergeArrays(a1, a2)));
+        Main start = new Main();
+        start.starter();
+    }
+
+    public void starter() {
+        String[] roles = {"Городничий", "Аммос Федорович", "Артемий Филиппович", "Лука Лукич"};
+        String[] textLines = {"Городничий: Я пригласил вас, господа, с тем, чтобы сообщить вам пренеприятное известие: к нам едет ревизор.",
+                "Аммос Федорович: Как ревизор?",
+                "Артемий Филиппович: Как ревизор?",
+                "Городничий: Ревизор из Петербурга, инкогнито. и еще с секретным предписаньем.",
+                "Аммос Федорович: Вот те на!",
+                "Артемий Филиппович: Вот не было заботы, так подай!",
+                "Лука Лукич: Господи боже! еще и с секретным предписаньем!"};
+        System.out.println(printTextPerRole(roles, textLines));
+    }
+
+    private String printTextPerRole(String[] roles, String[] textLines) {
+        StringBuilder text = new StringBuilder();
+//        int k = 0;
+        for (int i = 0; i < textLines.length; i++) {
+            for (int j = 0; j < roles.length; j++) {
+                if (textLines[i].toString().contains(roles[j])) {
+                    text.append(textLines[i]).append("\n");
+                }
+//                k++;
+            }
+        }
+        return text.toString();
+    }
+
+    public static boolean isPalindrome(String text) {
+        StringBuilder s = new StringBuilder();
+        for (int i = 0; i < text.length(); i++) {
+            char character = text.charAt(i);
+            if (Character.isLetterOrDigit(character)) {
+                s.append(Character.toLowerCase(character));
+            }
+        }
+        return s.toString().contentEquals(String.valueOf(s.reverse()));
+    }
+
+    public static BigInteger factorial(int value) {
+        BigInteger res = BigInteger.valueOf(1);
+        for (int i = 2; i <= value; i++) {
+            res = res.multiply(BigInteger.valueOf(i));
+        }
+        return res;
+    }
+
+    public static int[] mergeArrays(int[] a1, int[] a2) {
+        int[] a3 = new int[a1.length + a2.length];
+        int i = 0;
+        int j = 0;
+        int k = 0;
+        while (i < a1.length && j < a2.length) {
+            if (a1[i] <= a2[j]) {
+                a3[k] = a1[i];
+                i++;
+            } else {
+                a3[k] = a2[j];
+                j++;
+            }
+            k++;
+        }
+        while (i < a1.length) {
+            a3[k] = a1[i];
+            i++;
+            k++;
+        }
+        while (j < a2.length) {
+            a3[k] = a2[j];
+            j++;
+            k++;
+        }
+        return a3;
+    }
+
+}
