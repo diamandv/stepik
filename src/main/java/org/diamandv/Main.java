@@ -14,30 +14,22 @@ public class Main {
 
     public void starter() {
         String[] roles = {"Городничий", "Аммос Федорович", "Артемий Филиппович", "Лука Лукич"};
-        String[] textLines = {"Городничий: Я пригласил вас, господа, с тем, чтобы сообщить вам пренеприятное известие: к нам едет ревизор.",
-                "Аммос Федорович: Как ревизор?",
-                "Артемий Филиппович: Как ревизор?",
-                "Городничий: Ревизор из Петербурга, инкогнито. и еще с секретным предписаньем.",
-                "Аммос Федорович: Вот те на!",
-                "Артемий Филиппович: Вот не было заботы, так подай!",
-                "Лука Лукич: Господи боже! еще и с секретным предписаньем!"};
+        String[] textLines = {"Городничий: Я пригласил вас, господа, с тем, чтобы сообщить вам пренеприятное известие: к нам едет ревизор.", "Аммос Федорович: Как ревизор?", "Артемий Филиппович: Как ревизор?", "Городничий: Ревизор из Петербурга, инкогнито. и еще с секретным предписаньем.", "Аммос Федорович: Вот те на!", "Артемий Филиппович: Вот не было заботы, так подай!", "Лука Лукич: Господи боже! еще и с секретным предписаньем!"};
         System.out.println(printTextPerRole(roles, textLines));
     }
 
     private String printTextPerRole(String[] roles, String[] textLines) {
         StringBuilder text = new StringBuilder();
         StringBuilder line;
-        for (int i = 0; i < roles.length; i++) {
+        for (String role : roles) {
+            text.append(role).append(":").append("\n");
             for (int j = 0; j < textLines.length; j++) {
-                if (textLines[j].contains(roles[i])) {
-                    if (!text.toString().contains(roles[i])) {
-                        text.append(roles[i]).append("\n");
-                    }
-                    line = new StringBuilder(textLines[j] + "\n").replace(0, roles[i].length(), "").append("\n");
+                if (textLines[j].startsWith(role + ":")) {
+                    line = new StringBuilder(textLines[j]).replace(0, role.length() + 1, (j + 1) + ")").append("\n");
                     text.append(line);
                 }
-//                    text.replace(0, roles[i].length(), "").append("\n").append((j + 1)).append(")").append(textLines[j].strip());
             }
+            text.append("\n");
         }
         return text.toString();
     }
