@@ -2,13 +2,13 @@ package org.diamandv;
 
 import java.math.BigInteger;
 
-public class Main {
+public class Stepik {
     public static void main(String[] args) {
 //        System.out.println(isPalindrome("m..a....m!"));
         int[] a1 = new int[]{0, 1, 1, 2, 3, 5, 8, 9};
         int[] a2 = new int[]{1, 1, 2, 4, 9};
 //        System.out.println(Arrays.toString(mergeArrays(a1, a2)));
-        Main start = new Main();
+        Stepik start = new Stepik();
         start.starter();
     }
 
