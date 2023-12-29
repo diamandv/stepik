@@ -1,3 +1,5 @@
+package org.diamandv;
+
 import java.math.*;
 import java.util.Arrays;
 
@@ -78,7 +80,6 @@ public class module2 {
     }
 
     public static void moveRobot(Robot robot, int toX, int toY) {
-        System.out.println(robot.getX());
         int positionX = robot.getX();
         if (positionX < toX) {
             while (robot.getX() != toX)
@@ -97,9 +98,7 @@ public class module2 {
                     }
             }
         }
-        System.out.println(robot.getX());
 
-        System.out.println(robot.getY());
         int positionY = robot.getY();
         if (positionY < toY) {
             while (robot.getY() != toY)
@@ -118,6 +117,5 @@ public class module2 {
                     }
             }
         }
-        System.out.println(robot.getY());
     }
 }

@@ -1,6 +1,7 @@
 package org.diamandv;
 
 import java.math.BigInteger;
+import java.util.function.DoubleUnaryOperator;
 
 public class Stepik {
     public static void main(String[] args) {
@@ -79,6 +80,16 @@ public class Stepik {
             k++;
         }
         return a3;
+    }
+
+    public static double integrate(DoubleUnaryOperator f, double a, double b) {
+        double n = 1000000;
+        double s = (b - a) / n;
+        double result = 0;
+        for(int i = 0; i < n; i++) {
+            result +=  f.applyAsDouble(a + s * i);
+        }
+        return result *= s;
     }
 
 }
